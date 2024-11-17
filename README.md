@@ -93,19 +93,19 @@ To run this project locally, follow the steps below:
 
   Configure Firebase and PostgreSQL as per the project's configuration files.
    
-### API Endpoints
+## API Endpoints
 The following APIs are integrated into this project:
 
 Gemini API: Used for large language model processing.
 MadGrades API: Provides access to course grading data.
 Weather API: For weather-based recommendations and course timing suggestions.
 
-### Contributing
+## Contributing
 We welcome contributions to Our Playground - CS Inside! If you want to help improve the platform or add new features, follow these steps:
 
 Fork the repository.
 Create a new branch for your feature or bugfix.
 Submit a pull request with a description of the changes.
 
-### License
+## License
 This project is licensed under the MIT License.
