@@ -3,7 +3,6 @@ import UserPanel from './UserPanel';
 import Favorite from './Favorite';
 import ChatRooms from './ChatRooms';
 import DirectMessage from './DirectMessage';
-import ChatBot from './ChatBot';
 
 function SidePanel() {
   return (
@@ -22,10 +21,8 @@ function SidePanel() {
         
         <DirectMessage />
 
-        <ChatBot />
-
         <button
-        onClick={() => navigate('/chatbot')} // Adjust route to your chatbot path
+        onClick={() => navigate('/Chatbot')} // Adjust route to your chatbot path
         style={{
           backgroundColor: "yellow",
           color: "black",
@@ -38,10 +35,10 @@ function SidePanel() {
           cursor: "pointer",
           position: "absolute", // Positioning relative to the side panel
           bottom: "20px",
-          right: "150px",
+          left: "150px",
           boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
         }}
-      >
+        >
         💬
       </button>
     </div>
