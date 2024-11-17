@@ -62,10 +62,13 @@ To run this project locally, follow the steps below:
 
    ```bash
    git clone https://github.com/your-username/our-playground-cs-inside.git
+   ```
+   
 2. **Navigate into the project directory**:
 
-   ```bashCopy code
+   ```bash
   cd our-playground-cs-inside
+  ```
 
 3. **Set up the frontend and backend**:
 
@@ -74,6 +77,7 @@ To run this project locally, follow the steps below:
    ```bash
   npm install
   npm start
+  ```
 
   Make sure you have Python installed. Then, create a virtual environment and install dependencies:
 
@@ -83,6 +87,7 @@ To run this project locally, follow the steps below:
   venv\Scripts\activate     # For Windows
   pip install -r requirements.txt
   python app.py
+  ```
 
 4. **Set up the database**:
 
