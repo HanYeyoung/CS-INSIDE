@@ -53,7 +53,7 @@ const SubPage = () => {
     if (!sub) {
         renderPosts = <p className="text-lg text-center">Loading...</p>
     } else if (sub.posts.length === 0) {
-        renderPosts = <p className="text-lg text-center">There's no post yet written.</p>
+        renderPosts = <p className="text-lg text-center">There's no post written.</p>
     } else {
         renderPosts = sub.posts.map((post: Post) => (
             <PostCard key={post.identifier} post={post} subMutate={mutate} />
@@ -66,7 +66,6 @@ const SubPage = () => {
                 <>
                     <div>
                         <input type="file" hidden={true} ref={fileInputRef} onChange={uploadImage} />
-                        {/* Banner Image */}
                         <div className="bg-gray-400">
                             {sub.bannerUrl ? (
                                 <div
@@ -86,14 +85,13 @@ const SubPage = () => {
                                 ></div>
                             )}
                         </div>
-                        {/* Community Meta Data */}
                         <div className='h-20 bg-white'>
                             <div className='relative flex max-w-5xl px-5 mx-auto'>
                                 <div className='absolute' style={{ top: -15 }}>
                                     {sub.imageUrl && (
                                         <Image
                                             src={sub.imageUrl}
-                                            alt="Community Image"
+                                            alt="커뮤니티 이미지"
                                             width={70}
                                             height={70}
                                             className="rounded-full"
@@ -112,7 +110,6 @@ const SubPage = () => {
                             </div>
                         </div>
                     </div>
-                    {/* Post and Side Bar */}
                     <div className='flex max-w-5xl px-4 pt-5 mx-auto'>
                         <div className="w-full md:mr-3 md:w-8/12">{renderPosts} </div>
                         <SideBar sub={sub} />

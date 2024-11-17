@@ -73,7 +73,7 @@ export default PostCreate
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
     try {
         const cookie = req.headers.cookie;
-        if (!cookie) throw new Error("There's no cookie.")
+        if (!cookie) throw new Error("No Cookie.")
 
         await axios.get(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/api/auth/me`,
             { headers: { cookie } })

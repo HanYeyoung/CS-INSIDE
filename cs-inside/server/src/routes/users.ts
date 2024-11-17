@@ -41,7 +41,7 @@ const getUserData = async (req: Request, res: Response) => {
     return res.json({ user, userData });
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ error: "Problem occurred." });
+    return res.status(500).json({ error: "Error occurred." });
   }
 };
 

@@ -2,7 +2,7 @@ import axios from "axios";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
-import InputGroup from "../../components/InputGroup";
+import InputGroup from "../../components/InputGroup"
 
 const SubCreate = () => {
     const [name, setName] = useState("");
@@ -18,7 +18,7 @@ const SubCreate = () => {
             const res = await axios.post("/subs", { name, title, description })
 
             router.push(`/r/${res.data.name}`);
-        } catch (error:any) {
+        } catch (error: any) {
             console.log(error);
             setErrors(error.response.data);
         }
@@ -35,10 +35,10 @@ const SubCreate = () => {
                     <div className="my-6">
                         <p className="font-medium">Name</p>
                         <p className="mb-2 text-xs text-gray-400">
-                            Cannot change community name.
+                            Community name cannot be changed.
                         </p>
                         <InputGroup
-                            placeholder="Title"
+                            placeholder="Name"
                             value={name}
                             setValue={setName}
                             error={errors.name}
@@ -47,7 +47,7 @@ const SubCreate = () => {
                     <div className="my-6">
                         <p className="font-medium">Title</p>
                         <p className="mb-2 text-xs text-gray-400">
-                            Represent Theme. Can be changed anytime.
+                            Represents theme. Can be modified anytime.
                         </p>
                         <InputGroup
                             placeholder="Title"
@@ -72,7 +72,7 @@ const SubCreate = () => {
                         <button
                             className="px-4 py-1 text-sm font-semibold text-white bg-gray-400 border rounded"
                         >
-                            Create community
+                            Create Community
                         </button>
                     </div>
                 </form>

@@ -1,11 +1,12 @@
 import axios from "axios";
 import Link from "next/link";
-import { useRouter } from "next/router"
-import useSWR from 'swr';
+import { useRouter } from "next/router";
+import useSWR from "swr";
 import { Comment, Post } from "../../../../types";
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 import { useAuthState } from "../../../../context/auth";
 import { FormEvent, useState } from "react";
+import classNames from "classnames";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 
 const PostPage = () => {
@@ -13,7 +14,9 @@ const PostPage = () => {
     const { identifier, sub, slug } = router.query;
     const { authenticated, user } = useAuthState();
     const [newComment, setNewComment] = useState("");
-    const { data: post, mutate: postMutate } = useSWR<Post>(identifier && slug ? `/posts/${identifier}/${slug}` : null);
+    const { data: post, error, mutate: postMutate } = useSWR<Post>(
+        identifier && slug ? `/posts/${identifier}/${slug}` : null
+    );
     const { data: comments, mutate: commentMutate } = useSWR<Comment[]>(
         identifier && slug ? `/posts/${identifier}/${slug}/comments` : null
     );
@@ -26,18 +29,19 @@ const PostPage = () => {
 
         try {
             await axios.post(`/posts/${post?.identifier}/${post?.slug}/comments`, {
-                body: newComment
+                body: newComment,
             });
             commentMutate();
             setNewComment("");
         } catch (error) {
-            console.error(error);
+            console.log(error);
         }
     };
 
     const vote = async (value: number, comment?: Comment) => {
         if (!authenticated) router.push("/login");
 
+        // Reset vote if the same button is clicked
         if (
             (!comment && value === post?.userVote) ||
             (comment && comment.userVote === value)
@@ -50,12 +54,12 @@ const PostPage = () => {
                 identifier,
                 slug,
                 commentIdentifier: comment?.identifier,
-                value
+                value,
             });
             postMutate();
             commentMutate();
         } catch (error) {
-            console.error(error);
+            console.log(error);
         }
     };
 
@@ -92,12 +96,18 @@ const PostPage = () => {
                                 <div className="py-2 pr-2">
                                     <div className="flex items-center">
                                         <p className="text-xs text-gray-400">
-                                            Posted by
-                                            <Link href={`/u/${post.username}`} className="mx-1 hover:underline">
-                                                /u/{post.username}
+                                            Posted by{" "}
+                                            <Link href={`/u/${post.username}`}>
+                                                <span className="mx-1 hover:underline">
+                                                    /u/{post.username}
+                                                </span>
                                             </Link>
-                                            <Link href={post.url} className="mx-1 hover:underline">
-                                                {dayjs(post.createdAt).format("YYYY-MM-DD HH:mm")}
+                                            <Link href={post.url}>
+                                                <span className="mx-1 hover:underline">
+                                                    {dayjs(post.createdAt).format(
+                                                        "YYYY-MM-DD HH:mm"
+                                                    )}
+                                                </span>
                                             </Link>
                                         </p>
                                     </div>
@@ -106,7 +116,9 @@ const PostPage = () => {
                                     <div className="flex">
                                         <button>
                                             <i className="mr-1 fas fa-comment-alt fa-xs"></i>
-                                            <span className="font-bold">{post.commentCount} Comments</span>
+                                            <span className="font-bold">
+                                                {post.commentCount} Comments
+                                            </span>
                                         </button>
                                     </div>
                                 </div>
@@ -116,23 +128,25 @@ const PostPage = () => {
                                 {authenticated ? (
                                     <div>
                                         <p className="mb-1 text-xs">
-                                            <Link href={`/u/${user?.username}`} className="font-semibold text-blue-500">
-                                                {user?.username}
-                                            </Link>{" "}
-                                            to write a comment
+                                            <Link href={`/u/${user?.username}`}>
+                                                <span className="font-semibold text-blue-500">
+                                                    {user?.username}
+                                                </span>
+                                            </Link>
+                                            Write comment with {" "}
                                         </p>
                                         <form onSubmit={handleSubmit}>
                                             <textarea
                                                 className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-gray-600"
                                                 onChange={(e) => setNewComment(e.target.value)}
                                                 value={newComment}
-                                            />
+                                            ></textarea>
                                             <div className="flex justify-end">
                                                 <button
                                                     className="px-3 py-1 text-white bg-gray-400 rounded"
                                                     disabled={newComment.trim() === ""}
                                                 >
-                                                    Write Comment
+                                                    Write comment
                                                 </button>
                                             </div>
                                         </form>
@@ -140,15 +154,18 @@ const PostPage = () => {
                                 ) : (
                                     <div className="flex items-center justify-between px-2 py-4 border border-gray-200 rounded">
                                         <p className="font-semibold text-gray-400">
-                                            Log in to write comments
+                                            Log-in to write comments
                                         </p>
-                                        <Link href={`/login`} className="px-3 py-1 text-white bg-gray-400 rounded">
-                                            Log in
-                                        </Link>
+                                        <div>
+                                            <Link href={`/login`}>
+                                                <span className="px-3 py-1 text-white bg-gray-400 rounded">
+                                                    Log-in
+                                                </span>
+                                            </Link>
+                                        </div>
                                     </div>
                                 )}
                             </div>
-
                             {comments?.map((comment) => (
                                 <div className="flex" key={comment.identifier}>
                                     <div className="flex-shrink-0 w-10 py-2 text-center rounded-l">
@@ -162,7 +179,9 @@ const PostPage = () => {
                                                 <FaArrowUp />
                                             )}
                                         </div>
-                                        <p className="text-xs font-bold">{comment.voteScore}</p>
+                                        <p className="text-xs font-bold">
+                                            {comment.voteScore}
+                                        </p>
                                         <div
                                             className="flex justify-center w-6 mx-auto text-gray-400 rounded cursor-pointer hover:bg-gray-300 hover:text-blue-500"
                                             onClick={() => vote(-1, comment)}
@@ -176,14 +195,15 @@ const PostPage = () => {
                                     </div>
                                     <div className="py-2 pr-2">
                                         <p className="mb-1 text-xs leading-none">
-                                            <Link
-                                                href={`/u/${comment.username}`}
-                                                className="mr-1 font-bold hover:underline"
-                                            >
-                                                {comment.username}
+                                            <Link href={`/u/${comment.username}`}>
+                                                <span className="mr-1 font-bold hover:underline">
+                                                    {comment.username}
+                                                </span>
                                             </Link>
                                             <span className="text-gray-600">
-                                                {dayjs(comment.createdAt).format("YYYY-MM-DD HH:mm")}
+                                                {dayjs(comment.createdAt).format(
+                                                    "YYYY-MM-DD HH:mm"
+                                                )}
                                             </span>
                                         </p>
                                         <p>{comment.body}</p>

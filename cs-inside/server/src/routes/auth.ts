@@ -27,8 +27,8 @@ const register = async (req: Request, res: Response) => {
     const emailUser = await User.findOneBy({ email });
     const usernameUser = await User.findOneBy({ username });
 
-    if (emailUser) errors.email = "Email address already used.";
-    if (usernameUser) errors.username = "User name already used.";
+    if (emailUser) errors.email = "This email address is used.";
+    if (usernameUser) errors.username = "This user name is used.";
 
     if (Object.keys(errors).length > 0) {
       return res.status(400).json(errors);
@@ -67,12 +67,12 @@ const login = async (req: Request, res: Response) => {
     if (!user)
       return res
         .status(404)
-        .json({ username: "User name not registered." });
+        .json({ username: "User name is not registered." });
 
     const passwordMatches = await bcrypt.compare(password, user.password);
 
     if (!passwordMatches) {
-      return res.status(401).json({ password: "Password is incorrect." });
+      return res.status(401).json({ password: "Password is wrong." });
     }
 
     const token = jwt.sign({ username }, process.env.JWT_SECRET);

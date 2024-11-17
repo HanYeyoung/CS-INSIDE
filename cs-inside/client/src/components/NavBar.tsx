@@ -24,7 +24,7 @@ const NavBar: React.FC = () => {
             <span className="text-2xl font-semibold text-gray-400">
                 <Link href="/">
                     <Image
-                        src="/reddit-name-logo.png"
+                        src="/cs-inside-name-logo.png"
                         alt="logo"
                         width={80}
                         height={45}
@@ -36,7 +36,7 @@ const NavBar: React.FC = () => {
                     <FaSearch className="ml-2 text-gray-400" />
                     <input
                         type="text"
-                        placeholder="Search Reddit"
+                        placeholder="Search CS-INSIDE"
                         className="px-3 py-1 bg-transparent rounded h-7 focus:outline-none"
                     />
                 </div>
@@ -49,20 +49,22 @@ const NavBar: React.FC = () => {
                             className="w-20 px-2 mr-2 text-sm text-center text-white bg-gray-400 rounded h-7"
                             onClick={handleLogout}
                         >
-                            Log-out
+                            Log Out
                         </button>
-                    ) : (<>
-                        <Link href="/login">
-                            <span className="w-20 px-2 pt-1 mr-2 text-sm text-center text-blue-500 border border-blue-500 rounded h-7">
-                                Log-in
-                            </span>
-                        </Link>
-                        <Link href="/register">
-                            <span className="w-20 px-2 pt-1 text-sm text-center text-white bg-gray-400 rounded h-7">
-                                Sign-Up
-                            </span>
-                        </Link>
-                    </>)
+                    ) : (
+                        <>
+                            <Link href="/login">
+                                <div className="w-20 px-2 pt-1 mr-2 text-sm text-center text-blue-500 border border-blue-500 rounded h-7">
+                                    Log In
+                                </div>
+                            </Link>
+                            <Link href="/register">
+                                <div className="w-20 px-2 pt-1 text-sm text-center text-white bg-gray-400 rounded h-7">
+                                    Sign Up
+                                </div>
+                            </Link>
+                        </>
+                    )
                 )}
             </div>
         </div>

@@ -9,7 +9,7 @@ import Comment from "../entities/Comment";
 const vote = async (req:Request, res:Response) => {
     const { identifier, slug, commentIdentifier, value } = req.body;
     if(![-1, 0 ,1].includes(value)) {
-        return res.status(400).json({ value: "Can only have values of -1, 0, 1."});
+        return res.status(400).json({ value: "only values -1, 0, 1"});
     }
 
     try {
@@ -55,7 +55,7 @@ const vote = async (req:Request, res:Response) => {
             return res.json(post);
     } catch (error) {
         console.log(error);
-        return res.status(500).json({ error: "Issue occurred."})
+        return res.status(500).json({ error: "Error occurred."})
     }
 }
 

@@ -21,6 +21,7 @@ interface Action {
     payload: any;
 }
 
+
 const reducer = (state: State, { type, payload }: Action) => {
     switch (type) {
         case "LOGIN":
@@ -44,6 +45,8 @@ const reducer = (state: State, { type, payload }: Action) => {
             throw new Error(`Unknown action type: ${type}`)
     }
 }
+
+
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 

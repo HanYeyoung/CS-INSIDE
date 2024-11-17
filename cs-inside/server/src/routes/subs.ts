@@ -39,8 +39,8 @@ const createSub = async (req: Request, res: Response, next) => {
 
   try {
     let errors: any = {};
-    if (isEmpty(name)) errors.name = "Name cannot be empty.";
-    if (isEmpty(title)) errors.title = "Title cannot be empty.";
+    if (isEmpty(name)) errors.name = "Name cannot be blank.";
+    if (isEmpty(title)) errors.title = "Title cannot be blank.";
 
     const sub = await AppDataSource.getRepository(Sub)
       .createQueryBuilder("sub")
@@ -53,7 +53,7 @@ const createSub = async (req: Request, res: Response, next) => {
     }
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ error: "Problem occurred." });
+    return res.status(500).json({ error: "Error occurred." });
   }
 
   try {
@@ -69,7 +69,7 @@ const createSub = async (req: Request, res: Response, next) => {
     return res.json(sub);
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ error: "Problem occurred." });
+    return res.status(500).json({ error: "Error occurred." });
   }
 };
 
@@ -89,7 +89,7 @@ const topSubs = async (req: Request, res: Response) => {
     return res.json(subs);
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ error: "Problem occurred." });
+    return res.status(500).json({ error: "Error occurred." });
   }
 };
 
@@ -101,14 +101,14 @@ const ownSub = async (req: Request, res: Response, next: NextFunction) => {
     if (sub.username !== user.username) {
       return res
         .status(403)
-        .json({ error: "Does not have access to this community." });
+        .json({ error: "Do not own this community." });
     }
 
     res.locals.sub = sub;
     next();
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ error: "Problem occurred." });
+    return res.status(500).json({ error: "Error occurred." });
   }
 };
 
@@ -124,7 +124,7 @@ const upload = multer({
     if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
       callback(null, true);
     } else {
-      callback(new Error("This is not an image."));
+      callback(new Error("Not an image."));
     }
   },
 });
@@ -135,11 +135,11 @@ const uploadSubImage = async (req: Request, res: Response) => {
     const type = req.body.type;
     if (type !== "image" && type !== "banner") {
       if (!req.file?.path) {
-        return res.status(400).json({ error: "File does not exist" });
+        return res.status(400).json({ error: "File invalid" });
       }
 
       unlinkSync(req.file.path);
-      return res.status(400).json({ error: "Wrong format" });
+      return res.status(400).json({ error: "Invalid type" });
     }
 
     let oldImageUrn: string = "";
@@ -166,7 +166,7 @@ const uploadSubImage = async (req: Request, res: Response) => {
     return res.json(sub);
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ error: "Problem occurred." });
+    return res.status(500).json({ error: "Error occurred." });
   }
 };
 

@@ -10,7 +10,7 @@ export class User extends BaseEntity {
 
     @Index()
     @IsEmail(undefined, { message: "Email address is wrong." })
-    @Length(1, 255, { message: "Email address cannot be empty." })
+    @Length(1, 255, { message: "Email cannot be blank." })
     @Column({ unique: true })
     email: string;
 
@@ -20,7 +20,7 @@ export class User extends BaseEntity {
     username: string
 
     @Column()
-    @Length(6, 255, { message: 'Password should be more than 6 letters.' })
+    @Length(6, 255, { message: 'Password should be more than 3 letters.' })
     password: string;
 
     @OneToMany(() => Post, (post) => post.user)

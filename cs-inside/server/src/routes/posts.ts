@@ -24,7 +24,7 @@ const getPosts = async(req: Request, res: Response) => {
     return res.json(posts);
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ error: "Problem occurred."});
+    return res.status(500).json({ error: "Error occurred."});
   }
 }
 
@@ -50,7 +50,7 @@ const getPost = async (req: Request, res: Response) => {
 const createPost = async (req: Request, res: Response) => {
   const { title, body, sub } = req.body;
   if (title.trim() === "") {
-    return res.status(400).json({ title: "Title cannot be empty." });
+    return res.status(400).json({ title: "Title cannot be blank." });
   }
 
   const user = res.locals.user;
@@ -68,7 +68,7 @@ const createPost = async (req: Request, res: Response) => {
     return res.json(post);
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ error: "Problem occurred." });
+    return res.status(500).json({ error: "Error occurred." });
   }
 };
 
@@ -88,7 +88,7 @@ const getPostComments = async (req: Request, res: Response) => {
     return res.json(comments);
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ error: "Problem occurred." });
+    return res.status(500).json({ error: "Error occurred." });
   }
 };
 
