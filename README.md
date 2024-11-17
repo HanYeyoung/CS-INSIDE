@@ -54,45 +54,6 @@ The goal of this project is to provide CS students with a platform to:
 ### Personalized Demand
 - The platform tailors **course recommendations** based on individual learning goals and course preferences, ensuring a personalized experience for every student.
 
-## Installation
-
-To run this project locally, follow the steps below:
-
-1. **Clone the repository**:
-
-   ```bash
-   git clone https://github.com/your-username/our-playground-cs-inside.git
-   ```
-   
-2. **Navigate into the project directory**:
-
-   ```bash
-  cd our-playground-cs-inside
-  ```
-
-3. **Set up the frontend and backend**:
-
-  Ensure you have Node.js installed. Then run:
-
-   ```bash
-  npm install
-  npm start
-  ```
-
-  Make sure you have Python installed. Then, create a virtual environment and install dependencies:
-
-  ```bash
-  python -m venv venv
-  source venv/bin/activate  # For macOS/Linux
-  venv\Scripts\activate     # For Windows
-  pip install -r requirements.txt
-  python app.py
-  ```
-
-4. **Set up the database**:
-
-  Configure Firebase and PostgreSQL as per the project's configuration files.
-   
 ## API Endpoints
 The following APIs are integrated into this project:
 
