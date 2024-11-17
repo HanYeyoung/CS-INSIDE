@@ -1,4 +1,5 @@
 # Our Playground - CS Inside
+![Logo](images/cs-inside-name-logo.png)
 
 ## Overview
 
