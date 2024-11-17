@@ -106,7 +106,7 @@ function UserPanel() {
             <Dropdown.Item onClick={handleOpenImageRef}>
               Edit Your Profile
             </Dropdown.Item>
-            <Dropdown.Item onClick={handleOpenImageRef}>
+            <Dropdown.Item onClick={handleLogout}>
               Log Out
             </Dropdown.Item>
           </Dropdown.Menu>
