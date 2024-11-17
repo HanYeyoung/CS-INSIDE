@@ -117,12 +117,10 @@ const addMessagesListeners = (chatRoomId) => {
 
     let messagesArray = [];
     setMessages([]); 
-    // 대화가 없는 방에 들어갔을 때 아래 로직이 동작 안 해서 사용한 trick
 
     onChildAdded(child(messagesRef, chatRoomId), DataSnapshot => {
         messagesArray.push(DataSnapshot.val());
         const newMessageArray = [...messagesArray];
-         // 이 부분 없으면 messages state 가 동일하게 [] 이여서 리렌더링 X
 
         setMessages(newMessageArray);
         setMessagesLoading(false);
