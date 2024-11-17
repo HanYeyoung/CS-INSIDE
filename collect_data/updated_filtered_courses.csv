@@ -1,0 +1,31 @@
+uuid,name,number,subject,instructors,avg_grades,total_grades,avg_gpa
+3795cfcc-807e-3ca7-8348-d4a909a42f06,Programming I,200,Computer Sciences,,124.8,12600,3.278
+7ea3c96f-5246-39ac-9c22-eff420630de2,Data Sci Programming I,220,Computer Sciences,,73.5,10147,2.9
+60bf2c49-51e0-3f19-b9a5-04c55dbd3a7c,Introduction to Discrete Mathematics,240,Computer Sciences,,149.3,9258,3.072
+cac576c6-784e-3f56-8a53-6000c77c9a70,Introduction to Computer Engineering,252,Computer Sciences,,129.5,9196,3.097
+07eabcce-fdab-3781-99ca-7dc2dc3544ae,Programming II,300,Computer Sciences,,159.0,8587,3.306
+613fbdc2-d4e9-3ac0-ae9b-af126ae97119,Introduction to Data Programming,301,Computer Sciences,,165.5,7777,3.197
+28a2d3c7-60de-3cf1-80ff-e989f4d88350,Introduction to Programming,302,Computer Sciences,,122.7,7363,3.066
+723bb90e-7865-35bf-b4f4-7f2978dbd413,Problem Solving Using Computers,310,Computer Sciences,,112.0,7278,3.249
+b2107f35-bc8a-3ce0-b17e-4270f762d07b,Data Sci Programming II,320,Computer Sciences,,162.6,6993,3.321
+73e639b4-409e-3bcd-9211-51eafa19a1b1,Digital System Fundamentals,352,Computer Sciences,,107.3,6437,3.352
+cb48129f-99e6-36fa-9a20-46e0617e2499,Machine Organization and Programming,354,Computer Sciences,,174.4,5929,3.447
+892c1608-d603-3e23-80b9-5db404724b39,Introduction to Data Structures,367,Computer Sciences,,97.9,5485,2.978
+e449f054-a344-3556-b18a-5333e51ceb82,Programming III,400,Computer Sciences,,75.5,4832,3.078
+14d37fdc-b58d-30df-af83-a32e1779c8d6,Introduction to Numerical Methods,412,Computer Sciences,,93.3,4200,3.297
+c383953c-7c14-3614-b84e-107441ba5002,Introduction to Cryptography,435,Computer Sciences,,106.1,3502,3.153
+4d059bd9-4520-3a4d-9174-e3ad726d085e,Introduction to Combinatorics,475,Computer Sciences,,149.6,3441,3.263
+88e440eb-1e19-3b5f-b7a7-bf29b505e9c3,Software Engineering,506,Computer Sciences,,160.1,2561,3.448
+4c05436f-19b3-3f06-b99a-c28d268997f5,Linear Programming Methods,525,Computer Sciences,,85.2,2557,3.063
+d22643fc-796e-39f7-b078-2d62de0cf51d,Theory and Applications of Pattern Recognition,532,Computer Sciences,,67.1,2548,3.092
+ecff4693-50ce-3960-91fe-374a8db40534,Introduction to Programming Languages and Compilers,536,Computer Sciences,,81.7,2533,3.255
+e9a360bc-be2d-35d1-9684-a464bbbd0c15,Introduction to Operating Systems,537,Computer Sciences,,69.1,2281,3.346
+de8a0a8c-e076-3ec2-8b6c-e1e1ee82a53e,Introduction to Artificial Intelligence,540,Computer Sciences,,36.9,2180,3.086
+d5fe8d3d-c558-3d58-a82f-7956ed122240,Introduction to Computer Architecture,552,Computer Sciences,,61.2,2143,3.31
+323b9c99-a1d7-37d7-a524-7ad3d318b85d,Computer Graphics,559,Computer Sciences,,92.0,2024,3.422
+0792eac4-46ac-3e08-8cd0-858349ff66d1,Database Management Systems: Design and Implementation,564,Computer Sciences,,70.8,1982,3.679
+af9d93a2-e492-320d-af8d-9037cdbac6e5,Introduction to Human-Computer Interaction,570,Computer Sciences,,66.5,1929,3.549
+1f36cc02-0eee-3fcf-be09-1ad17aecf83c,Introduction to Algorithms,577,Computer Sciences,,54.6,1857,2.975
+90d9a30d-6330-33f8-9aee-fe82055a4653,Undergraduate Elective Topics in Computing,639,Computer Sciences,,54.4,1848,3.55
+f87b3a9c-34da-3fbf-8621-2a513cb3e4d1,Introduction to Computer Networks,640,Computer Sciences,,117.0,1755,3.738
+e6d6df0e-1456-36bb-81bc-5648cf0f224d,Machine Learning,760,Computer Sciences,,54.0,1620,2.968
