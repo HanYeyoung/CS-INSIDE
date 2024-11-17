@@ -56,9 +56,9 @@ const PostCard = ({
             className='flex mb-4 bg-white rounded'
             id={identifier}
         >
-            {/* 좋아요 싫어요 기능 부분 */}
+            {/* Like / Dislike */}
             <div className="flex-shrink-0 w-10 py-2 text-center rounded-l">
-                {/* 좋아요 */}
+                {/* Like */}
                 <div
                     className="flex justify-center w-6 mx-auto text-gray-400 rounded cursor-pointer hover:bg-gray-300 hover:text-red-500"
                     onClick={() => vote(1)}
@@ -69,7 +69,7 @@ const PostCard = ({
                     }
                 </div>
                 <p className="text-xs font-bold">{voteScore}</p>
-                {/* 싫어요 */}
+                {/* Dislike */}
                 <div
                     className="flex justify-center w-6 mx-auto text-gray-400 rounded cursor-pointer hover:bg-gray-300 hover:text-blue-500"
                     onClick={() => vote(-1)}
@@ -80,7 +80,7 @@ const PostCard = ({
                     }
                 </div>
             </div>
-            {/* 포스트 데이터 부분 */}
+            {/* Post Data */}
             <div className="w-full p-2">
                 <div className='flex items-center'>
                     {!isInSubPage && (

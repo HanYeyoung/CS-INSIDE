@@ -52,17 +52,17 @@ const NavBar: React.FC = () => {
                             className="w-20 px-2 mr-2 text-sm text-center text-white bg-gray-400 rounded h-7"
                             onClick={handleLogout}
                         >
-                            로그아웃
+                            Log out
                         </button>
                     ) : (<>
                         <Link href="/login">
                             <a className="w-20 px-2 pt-1 mr-2 text-sm text-center text-blue-500 border border-blue-500 rounded h-7">
-                                로그인
+                                Log-in
                             </a>
                         </Link>
                         <Link href="/register">
                             <a className="w-20 px-2 pt-1 text-sm text-center text-white bg-gray-400 rounded h-7">
-                                회원가입
+                                Sign-up
                             </a>
                         </Link>
                     </>)
