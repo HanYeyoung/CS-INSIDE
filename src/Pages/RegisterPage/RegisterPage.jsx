@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import {createUserWithEmailAndPassword, getAuth, updateProfile} from 'firebase/auth';
-import app, { db } from '/src/firebase';
+import app, { db } from '../../firebase';
 import md5 from 'md5';
 import { ref, set } from 'firebase/database';
 import { setUser } from '../../store/userSlice';
+import { useDispatch } from 'react-redux';
 
 function RegisterPage() {
 
@@ -19,13 +20,18 @@ function RegisterPage() {
         handleSubmit
     } = useForm();
 
+    const dispatch = useDispatch();
+
+    const password = useRef();
+    password.current = watch("password");
+
     const onSubmit = async (data) => {
         // data.email => johndoe12@gmail.com   data.password => 123123 data.name => john doe
 
         try {
-            setLoading(true);
-            const createdUser = await createUserWithEmailAndPassword(auth, data.email, data.password)
+            setLoading(true)
 
+            const createdUser = await createUserWithEmailAndPassword(auth, data.email, data.password)
             await updateProfile(auth.currentUser, {
                 displayName: data.name,
                 photoURL: `http://gravatar.com/avatar/${md5(createdUser.user.email)}?d=identicon`,
@@ -42,6 +48,7 @@ function RegisterPage() {
                 name: createdUser.user.displayName,
                 image: createdUser.user.photoURL
             })
+
             setLoading(false)
         } catch (error) {
             setErrorFromSubmit(error.message);
@@ -52,39 +59,33 @@ function RegisterPage() {
         }
     }
 
-
     return (
         <div className='auth-wrapper'>
             <div style={{textAlign: 'center'}}>
                 <h3>Register</h3>
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <label htmlFor='email'>Email</label>
+                <label>Email</label>
                 <input
                     name='email'
                     type='email'
-                    id='email'
                     {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
                 />
                 {errors.email && <p>The email field is required</p>}
 
-                <label htmlFor='name'>Name</label>
+                <label>Name</label>
                 <input
                     name='name'
-                    type='text'
-                    id='name'
                     {...register("name", {required: true, maxLength: 30})}
                 />
                 {errors.name && errors.name.type === "required" && <p>The name field is required</p>}
                 {errors.name && errors.name.type === "maxLength" && <p>Check your input again</p>}
 
-                <label htmlFor='password'>Password</label>
+                <label>Password</label>
                 <input
                     name='password'
                     type='password'
-                    id='password'
                     {...register("password", {required: true, minLength: 8 })}
-
                 />
                 {errors.password && errors.password.type === "required" && <p>The password field is required</p>}
                 {errors.password && errors.password.type === "minLength" && <p>Password must be longer than 8 characters</p>}

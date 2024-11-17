@@ -1,6 +1,6 @@
 import React from 'react'
-import SidePanel from './SidePanel/SidePanel.jsx';
-import MainPanel from './MainPanel/MainPanel.jsx';
+import SidePanel from './SidePanel/SidePanel';
+import MainPanel from './MainPanel/MainPanel';
 
 const ChatPage = () => {
   return (
@@ -15,4 +15,4 @@ const ChatPage = () => {
   )
 }
 
-export default ChatPage;
+export default ChatPage

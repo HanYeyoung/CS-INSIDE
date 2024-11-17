@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const LoginPage = () => {
     const auth = getAuth();
+    const navigate = useNavigate();
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [errorFromSubmit, setErrorFromSubmit] = useState("")
@@ -15,16 +16,19 @@ const LoginPage = () => {
             setLoading(true)
 
             await signInWithEmailAndPassword(auth, data.email, data.password);
-
+            
+            navigate("/");
             setLoading(false)
+
         } catch (error) {
             setErrorFromSubmit(error.message)
             setLoading(false)
+            
             setTimeout(() => {
                 setErrorFromSubmit("")
             }, 5000);
         }
-    }
+    };
 
     return (
         <div className="auth-wrapper">
@@ -52,6 +56,9 @@ const LoginPage = () => {
                 {errorFromSubmit &&
                     <p>{errorFromSubmit}</p>
                 }
+                <button type="submit" disabled={loading}>
+                    {loading ? "Logging in..." : "Login"}
+                </button>
 
                 <input type="submit" disabled={loading} />
                 <Link style={{ color: 'gray', textDecoration: 'none' }} to="/register">Don't have an account? Sign up!  </Link>
