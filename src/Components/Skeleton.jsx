@@ -1,9 +1,14 @@
 import React from 'react'
+import './Skeleton.css';
 
-const skeleton = () => {
-  return (
-    <div>skeleton</div>
-  )
+function Skeleton() {
+    return (
+        <div className="skeleton">
+            <div className="skeleton-avatar" />
+            <div className="skeleton-author" />
+            <div className="skeleton-description" />
+        </div>
+    )
 }
 
-export default skeleton
+export default Skeleton

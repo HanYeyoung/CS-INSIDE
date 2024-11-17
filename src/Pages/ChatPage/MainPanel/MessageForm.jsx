@@ -60,7 +60,6 @@ function MessageForm() {
             return;
         }
         setLoading(true);
-        //firebase에 메시지를 저장하는 부분 
         try {
             // await messagesRef.child(chatRoom.id).push().set(createMessage())
             await set(push(child(messagesRef, currentChatRoom.id)), createMessage())
@@ -180,10 +179,10 @@ function MessageForm() {
                             style={{ width: '100%', fontSize: 20, fontWeight: 'bold' }}
                             disabled={loading ? true : false}
                         >
-                            보내기
+                            send
                         </button>
                     </div>
-                    <div style={{ flexGrow: 1 }}>
+                    {/* <div style={{ flexGrow: 1 }}>
                         <button
                             type='button'
                             onClick={handleOpenImageRef}
@@ -191,9 +190,9 @@ function MessageForm() {
                             style={{ width: '100%', fontSize: 20, fontWeight: 'bold' }}
                             disabled={loading ? true : false}
                         >
-                            이미지
+                            image
                         </button>
-                    </div>
+                    </div> */}
                 </div>
             </form>
 
